@@ -11,7 +11,6 @@
 *.sass-cache
 
 # OS or Editor folders
-.idea
 .DS_Store
 .cache
 .project
@@ -21,6 +20,27 @@
 nbproject
 Thumbs.db
 tags
+
+
+# User-specific stuff:
+.idea/workspace.xml
+.idea/tasks.xml
+
+# Sensitive or high-churn files:
+.idea/dataSources/
+.idea/dataSources.ids
+.idea/dataSources.xml
+.idea/dataSources.local.xml
+.idea/sqlDataSources.xml
+.idea/dynamic.xml
+.idea/uiDesigner.xml
+
+# Gradle:
+.idea/gradle.xml
+.idea/libraries
+
+# Mongo Explorer plugin:
+.idea/mongoSettings.xml
 
 # NPM packages folder.
 node_modules/
