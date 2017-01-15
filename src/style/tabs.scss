@@ -1,3 +1,52 @@
-p {
-  color: #000;
+.tabs {
+  margin: $mainPadding;
+  background: $c_white;
+  border: 1px solid $c_grey;
+  border-radius: 3px;
+
+  &-labels {
+    margin: 0;
+    padding: 0;
+    background-color: $c_blue1;
+    border-radius: 3px;
+  }
+
+  & li {
+    background-color: $c_blue2;
+    display: inline-block;
+    min-width: $maxMobileWidth;
+    border-radius: 3px;
+
+    @media (max-width: ($maxMobileWidth*2)+($mainPadding*2)) {
+      min-width: initial;
+      width: 100%;
+    }
+
+    & a {
+      padding: 8px 12px;
+      display: block;
+      color: $c_white;
+      text-decoration: none;
+      border-bottom: 4px solid $c_blue2;
+      font-family: Arial;
+
+      @media (max-width: ($maxMobileWidth*2)+($mainPadding*2)) {
+        border-bottom: 1px solid  $c_white;
+      }
+
+      &.active {
+        border-bottom-color: $c_grey;
+        font-weight: 700;
+
+        @media (max-width: ($maxMobileWidth*2)+($mainPadding*2)) {
+          border-right: 10px solid  $c_white;
+        }
+      }
+    }
+  }
+
+  &-content {
+    padding: 25px;
+  }
 }
+

@@ -15,7 +15,7 @@
     "browser": true
   },
   "rules": {
-    "no-console":2,
+    "no-console":1,
     "arrow-parens": "off",
     "generator-star-spacing": "off",
     "import/extensions": "off",
@@ -25,6 +25,9 @@
     "react/no-danger": "off",
     "react/no-unused-prop-types": "off",
     "react/prefer-stateless-function": "off",
-    "mocha/no-exclusive-tests": "error"
+    "mocha/no-exclusive-tests": "error",
+    "import/prefer-default-export":"off",
+    "jsx-a11y/href-no-hash":"off",
+    "import/no-named-as-default":"off"
   }
 }

@@ -1,8 +1,16 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
-import { Test } from './components/Test';
+import { render } from 'react-dom';
+import { createStore } from 'redux';
+import { Provider } from 'react-redux';
+import App from './containers/app';
+import reducer from './reducers';
 import './index.scss';
 
-ReactDOM.render(<div>
-  <Test />
-</div>, document.getElementById('app'));
+const store = createStore(reducer);
+
+render(
+  <Provider store={store}>
+    <App />
+  </Provider>,
+  document.getElementById('app'),
+);
