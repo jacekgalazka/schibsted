@@ -1,11 +1,15 @@
 import React, { PropTypes, Component } from 'react';
-import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import * as actions from '../actions';
 import { Tabs } from '../components/tabs/Tabs';
 
 
 export class App extends Component {
+
+  componentDidMount() {
+    this.props.fetchFile();
+    this.props.fetchRSS();
+  }
 
   render() {
     return (
@@ -19,18 +23,35 @@ export class App extends Component {
   }
 }
 
+function mapStateToProps(state) {
+  return {
+    rssData: state.rssData,
+    fileData: state.fileData,
+  };
+}
+
 const mapDispatchToProps = dispatch => ({
-  fetchData: bindActionCreators(actions, dispatch),
+  fetchRSS: () => {
+    dispatch(actions.fetchRSS()).then((response) => {
+      !response.error ? dispatch(actions.fetchRSSSuccess(response.payload.data)) :
+        dispatch(actions.fetchRSSFailure(response.payload.data));
+    });
+  },
+  fetchFile: () => {
+    dispatch(actions.fetchFile()).then((response) => {
+      !response.error ? dispatch(actions.fetchFileSuccess(response.payload.data)) :
+        dispatch(actions.fetchFileFailure(response.payload.data));
+    });
+  },
 });
 
 App.propTypes = {
-  fetchData: PropTypes.oneOfType([
-    PropTypes.object,
-    PropTypes.func,
-  ]),
+  fetchRSS: PropTypes.func,
+  fetchFile: PropTypes.func,
+
 };
 
 export default connect(
-  null,
+  mapStateToProps,
   mapDispatchToProps,
 )(App);

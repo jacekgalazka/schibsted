@@ -28,6 +28,8 @@
     "mocha/no-exclusive-tests": "error",
     "import/prefer-default-export":"off",
     "jsx-a11y/href-no-hash":"off",
-    "import/no-named-as-default":"off"
+    "import/no-named-as-default":"off",
+    "import/newline-after-import":"off",
+    "no-unused-expressions":"off"
   }
 }
