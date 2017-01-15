@@ -1,5 +1,5 @@
 export const RSS_URL = 'http://www.vg.no/rss/feed/forsiden/?frontId=1&format=json';
-export const FILE_URL = '/logs/varnish.txt';
+export const FILE_URL = '/log/varnish.txt';
 
 export const FETCH_RSS = 'FETCH_RSS';
 export const FETCH_RSS_SUCCESS = 'FETCH_RSS_SUCCESS';
