@@ -1,8 +1,11 @@
-const webpack = require('webpack');
+require('webpack');
+const ExtractTextPlugin = require('extract-text-webpack-plugin');
+const path = require('path');
 
-module.exports = {
+module.exports = [{
+  name: 'js',
   devtool: 'cheap-eval-source-map',
-  entry: ['./src/index.js'],
+  entry: ['./src/index.jsx'],
   output: {
     filename: 'dist.js',
     path: `${__dirname}/dist`,
@@ -10,19 +13,30 @@ module.exports = {
   },
   module: {
     loaders: [
-      { test: /\.jsx$/, loader: 'babel' },
-      { test: /\.jsx?$/, loader: 'babel' },
+      {
+        test: /\.jsx?$/,
+        exclude: /node_modules/,
+        loader: 'babel',
+        query: {
+          presets: ['es2015', 'react'],
+        },
+      },
+      {
+        test: /\.scss$/,
+        loader: ExtractTextPlugin.extract('css!sass'),
+      },
     ],
+  },
+  resolve: {
+    extensions: ['', '.js', '.jsx'],
+    root: path.join(__dirname, 'node_modules'),
   },
   devServer: {
     inline: true,
   },
   plugins: [
-    new webpack.DefinePlugin({
-      'process.env': {
-        // To enable production mode:
-        // NODE_ENV: JSON.stringify('production')
-      },
-    }),
+    new ExtractTextPlugin('style.css'),
   ],
-};
+},
+
+];
