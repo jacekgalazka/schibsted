@@ -5,7 +5,8 @@
     "plugin:css-modules/recommended"
   ],
   "plugins": [
-    "css-modules"
+    "css-modules",
+    "mocha"
   ],
   "globals": {
     "__DEV__": true
@@ -23,6 +24,7 @@
     "react/jsx-filename-extension": "off",
     "react/no-danger": "off",
     "react/no-unused-prop-types": "off",
-    "react/prefer-stateless-function": "off"
+    "react/prefer-stateless-function": "off",
+    "mocha/no-exclusive-tests": "error"
   }
 }
