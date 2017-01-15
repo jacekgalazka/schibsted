@@ -2,32 +2,28 @@ import React, { PropTypes, Component } from 'react';
 import { connect } from 'react-redux';
 import * as actions from '../actions';
 import { Tabs } from '../components/tabs/Tabs';
+import RssTab from './RssTab';
+import LogTab from './LogTab';
 
 
 export class App extends Component {
-
-  componentDidMount() {
-    this.props.fetchFile();
-    this.props.fetchRSS();
-  }
 
   render() {
     return (
       <div className="test">
         <Tabs>
-          <div label="test1">1</div>
-          <div label="test2">2</div>
+          <LogTab
+            label="Varnich log"
+            fetchLog={this.props.fetchFile}
+          />
+          <RssTab
+            label="Data from RSS"
+            fetchRSS={this.props.fetchRSS}
+          />
         </Tabs>
       </div>
     );
   }
-}
-
-function mapStateToProps(state) {
-  return {
-    rssData: state.rssData,
-    fileData: state.fileData,
-  };
 }
 
 const mapDispatchToProps = dispatch => ({
@@ -52,6 +48,6 @@ App.propTypes = {
 };
 
 export default connect(
-  mapStateToProps,
+  null,
   mapDispatchToProps,
 )(App);
