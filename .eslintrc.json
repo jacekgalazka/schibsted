@@ -31,6 +31,8 @@
     "import/no-named-as-default":"off",
     "import/newline-after-import":"off",
     "no-unused-expressions":"off",
-    "class-methods-use-this":"off"
+    "class-methods-use-this":"off",
+    "no-prototype-builtins":1,
+    "no-restricted-syntax":1
   }
 }

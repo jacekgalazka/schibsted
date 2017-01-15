@@ -16,33 +16,70 @@ export class LogTab extends Component {
     return objectArray;
   }
 
+  getBigestArray(obj) {
+    let arr = [];
+    // FIXME
+    for (const property in obj) {
+      if (obj.hasOwnProperty(property)) {
+        obj[property].length > arr.length ? arr = obj[property] : null;
+      }
+    }
+    return arr.slice(0, 5);
+  }
+
   groupElements(arr) {
     const hostGroups = {};
     const fileGroups = {};
+    // next time use regex
     arr.forEach((item) => {
       hostGroups[item[0]] ? hostGroups[item[0]].push(item) : hostGroups[item[0]] = [item];
       fileGroups[item[1]] ? fileGroups[item[1]].push(item) : fileGroups[item[1]] = [item];
     });
-
     return { hostGroups, fileGroups };
   }
 
-  renderHostList(sortedObjects) {
-    console.log(sortedObjects.hostGroups);
+  renderHostsList(list) {
+    return list.map((item, key) => (
+      <p key={key} className="host">
+        {item[2]}
+      </p>
+      ));
   }
 
-  renderFileList(sortedObjects) {
-    console.log(sortedObjects.fileGroups);
+  renderFilesList(list) {
+    return list.map((item, key) => (
+      <p key={key} className="host">
+        {item[2]}
+      </p>
+      ));
   }
 
-  renderLogObjectList() {
+  renderHosts(sortedObjects) {
+    return (
+      sortedObjects.hostGroups ? <div>
+        {this.renderHostsList(this.getBigestArray(sortedObjects.hostGroups))}
+      </div> : null
+    );
+  }
+
+  renderFiles(sortedObjects) {
+    return (
+      sortedObjects.fileGroups ? <div>
+        {this.renderFilesList(this.getBigestArray(sortedObjects.fileGroups))}
+      </div> : null
+    );
+  }
+
+  renderLogObject() {
     const splitedLogArray = this.getSplitedArray();
     const sortedObjects = splitedLogArray.length ? this.groupElements(splitedLogArray, 0) : {};
 
     return (
       <div>
-        {this.renderHostList(sortedObjects)}
-        {this.renderFileList(sortedObjects)}
+        <h3>Most used hosts</h3>
+        {this.renderHosts(sortedObjects)}
+        <h3>Most downloaded files</h3>
+        {this.renderFiles(sortedObjects)}
       </div>
     );
   }
@@ -50,7 +87,7 @@ export class LogTab extends Component {
   render() {
     return (
       <div className="logs-list">
-        {this.renderLogObjectList()}
+        {this.renderLogObject()}
       </div>
     );
   }
