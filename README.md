@@ -1,7 +1,10 @@
-installation:
+## Installation
+
 npm install webpack -g
 npm install webpack-dev-server -g
 npm install
+
+## Npm taks
 
 dev server :
 npm run dev

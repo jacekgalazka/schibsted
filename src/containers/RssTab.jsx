@@ -21,14 +21,14 @@ export class RssTab extends Component {
     const objectList = this.sortRssData(this.props.rssData);
 
     return objectList.map((item, key) => (
-      <p key={key}>
-        <span className="rss-list_publisched-date">
+      <div key={key}>
+        <p className="rss-list_publisched-date">
           { item.published.datetime }
-        </span>
-        <span className="rss-list_title">
+        </p>
+        <p className="rss-list_title">
           { item.title }
-        </span>
-      </p>
+        </p>
+      </div>
       ));
   }
 
