@@ -4,7 +4,7 @@ const path = require('path');
 
 module.exports = [{
   name: 'js',
-  devtool: 'cheap-eval-source-map',
+  devtool: 'eval',
   entry: ['./src/index.jsx'],
   output: {
     filename: 'dist.js',

@@ -30,3 +30,17 @@ Run pre-commit lint:
 
 npm run lint:staged
 
+## TODOO
+
+- webpack dev config and webpack prod config
+
+- runing  webpack from .sh (windows -.bat) file - unnecessary global webpack package
+
+- action creators in redux flow
+
+- Minification
+
+- tests, tests and tests
+
+
+
