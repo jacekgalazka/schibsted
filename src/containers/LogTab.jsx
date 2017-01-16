@@ -1,5 +1,6 @@
 import React, { PropTypes, Component } from 'react';
 import { connect } from 'react-redux';
+import * as utils from './../utils/logUtils';
 
 export class LogTab extends Component {
 
@@ -7,41 +8,10 @@ export class LogTab extends Component {
     this.props.fetchLog();
   }
 
-  getSplitedArray() {
-    let objectArray = this.props.fileData ? this.props.fileData.split(/\n/) : [];
-    objectArray = objectArray.map((item) => {
-      const elementArray = item.split(' ');
-      return [elementArray[0], elementArray[6], item];
-    });
-    return objectArray;
-  }
-
-  getBigestArray(obj) {
-    let arr = [];
-    // FIXME
-    for (const property in obj) {
-      if (obj.hasOwnProperty(property)) {
-        obj[property].length > arr.length ? arr = obj[property] : null;
-      }
-    }
-    return arr.slice(0, 5);
-  }
-
-  groupElements(arr) {
-    const hostGroups = {};
-    const fileGroups = {};
-    // next time use regex
-    arr.forEach((item) => {
-      hostGroups[item[0]] ? hostGroups[item[0]].push(item) : hostGroups[item[0]] = [item];
-      fileGroups[item[1]] ? fileGroups[item[1]].push(item) : fileGroups[item[1]] = [item];
-    });
-    return { hostGroups, fileGroups };
-  }
-
   renderHostsList(list) {
     return list.map((item, key) => (
       <p key={key} className="host">
-        {item[2]}
+        {item[0]}
       </p>
       ));
   }
@@ -49,7 +19,7 @@ export class LogTab extends Component {
   renderFilesList(list) {
     return list.map((item, key) => (
       <p key={key} className="host">
-        {item[2]}
+        {item[0]}
       </p>
       ));
   }
@@ -57,7 +27,7 @@ export class LogTab extends Component {
   renderHosts(sortedObjects) {
     return (
       sortedObjects.hostGroups ? <div>
-        {this.renderHostsList(this.getBigestArray(sortedObjects.hostGroups))}
+        {this.renderHostsList(utils.getResultArray(sortedObjects.hostGroups))}
       </div> : null
     );
   }
@@ -65,14 +35,14 @@ export class LogTab extends Component {
   renderFiles(sortedObjects) {
     return (
       sortedObjects.fileGroups ? <div>
-        {this.renderFilesList(this.getBigestArray(sortedObjects.fileGroups))}
+        {this.renderFilesList(utils.getResultArray(sortedObjects.fileGroups))}
       </div> : null
     );
   }
 
   renderLogObject() {
-    const splitedLogArray = this.getSplitedArray();
-    const sortedObjects = splitedLogArray.length ? this.groupElements(splitedLogArray, 0) : {};
+    const splitedLogArray = utils.getSplitedArray(this.props.fileData);
+    const sortedObjects = splitedLogArray.length ? utils.groupElements(splitedLogArray, 0) : {};
 
     return (
       <div>

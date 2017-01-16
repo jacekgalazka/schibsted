@@ -33,6 +33,7 @@
     "no-unused-expressions":"off",
     "class-methods-use-this":"off",
     "no-prototype-builtins":1,
-    "no-restricted-syntax":1
+    "no-restricted-syntax":1,
+    "no-plusplus":"off"
   }
 }
