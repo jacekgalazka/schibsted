@@ -10,7 +10,7 @@ export class LogTab extends Component {
 
   renderHostsList(list) {
     return list.map((item, key) => (
-      <p key={key} className="host">
+      <p key={key} className="logs-list_element">
         {item[0]}
       </p>
       ));
@@ -18,7 +18,7 @@ export class LogTab extends Component {
 
   renderFilesList(list) {
     return list.map((item, key) => (
-      <p key={key} className="host">
+      <p key={key} className="logs-list_element">
         {item[0]}
       </p>
       ));

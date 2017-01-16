@@ -31,7 +31,7 @@
       font-family: Arial;
 
       @media (max-width: ($maxMobileWidth*2)+($mainPadding*2)) {
-        border-bottom: 1px solid  $c_white;
+        border-bottom: 1px solid $c_white;
       }
 
       &.active {
@@ -39,7 +39,7 @@
         font-weight: 700;
 
         @media (max-width: ($maxMobileWidth*2)+($mainPadding*2)) {
-          border-right: 10px solid  $c_white;
+          border-right: 10px solid $c_white;
         }
       }
     }
@@ -47,6 +47,10 @@
 
   &-content {
     padding: 25px;
+  }
+
+  .logs-list_element {
+    word-break: break-all;
   }
 }
 

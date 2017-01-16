@@ -31,7 +31,7 @@ export function fetchRSSFailure(error) {
 export function fetchFile() {
   const request = axios({
     method: 'get',
-    url: constants.FILE_URL,
+    url: location.href + constants.FILE_URL,
   });
 
   return {
