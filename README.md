@@ -2,10 +2,6 @@ This is my personal react-redux starter kit :-)
 
 ## Installation
 
-
-
-
-
 npm install webpack -g
 
 npm install webpack-dev-server -g
